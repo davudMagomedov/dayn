@@ -95,13 +95,6 @@ def tokenize_string(string: str) -> list[Token]:
             case '<' if position + 2 < len(string) and string[position:position + 3] == "<->":
                 tokens.append(Token(TokenType.EQUAL_SIGN, (position, position + 3)))
                 position += 2
-            case 'и' if position + 2 < len(string) and string[position:position + 3] == 'или':
-                tokens.append(Token(TokenType.OR_SIGN, (position, position + 3)))
-                position += 2
-            case 'и': tokens.append(Token(TokenType.AND_SIGN, (position, position + 1)))
-            case 'н' if position + 1 < len(string) and string[position + 1] == 'е':
-                tokens.append(Token(TokenType.NOT_SIGN, (position, position + 2)))
-                position += 1
             case '-' if position + 1 < len(string) and string[position + 1] == '>':
                 tokens.append(Token(TokenType.INVESTIGATION_SIGN, (position, position + 2)))
                 position += 1
